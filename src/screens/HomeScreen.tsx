@@ -10,6 +10,7 @@ import { RNDemoAppVizbeeHomeSSODelegate } from "../homesso/RNDemoAppVizbeeHomeSS
 import { VideoList } from "../components/VideoList";
 import { useVizbeeSession } from "../hooks/useVizbeeSession";
 import { useVizbeeMedia } from "../hooks/useVizbeeMedia";
+import { useVizbeeCastIconState } from "../hooks/useVizbeeCastIconState";
 import { videos } from "../constants/VideoListContent";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Colors } from '../constants/Colors';
@@ -17,13 +18,14 @@ import { MobileToTVMessager } from '../message/MobileToTVMessager';
 
 export const HomeScreen = ({ navigation }: { navigation: any }) => {
   const { castingState } = useVizbeeSession();
+  const { castIconState } = useVizbeeCastIconState();
   const { castingPosition, lastCastingGuid } = useVizbeeMedia();
   const [mobileToTVMessager] = useState(() => new MobileToTVMessager());
   let homeSSOManager: VizbeeHomeSSOManager | undefined = undefined;
 
   useEffect(() => {
     
-    if (homeSSOManager) {
+    if (!homeSSOManager) {
       homeSSOManager = VizbeeHomeSSOManager.getInstance();
       homeSSOManager.enableLogging(true);
       homeSSOManager.initialize(new RNDemoAppVizbeeHomeSSODelegate());
@@ -50,6 +52,11 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
       }
     }
   }, [castingState, lastCastingGuid, castingPosition, navigation]);
+
+  // Log cast icon state changes
+  useEffect(() => {
+    console.log(`Current cast icon state: ${castIconState}`);
+  }, [castIconState]);
 
   const handleSettingsPress = () => {
     navigation.navigate('Settings');

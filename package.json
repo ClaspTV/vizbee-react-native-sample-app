@@ -27,7 +27,7 @@
     "react-native-vector-icons": "^10.2.0",
     "react-native-video": "^6.4.3",
     "react-native-vizbee-homesso-sender-sdk": "^1.0.0",
-    "react-native-vizbee-sender-sdk": "^1.1.42-rc.6"
+    "react-native-vizbee-sender-sdk": "^1.1.43"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
