@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from "react-native";
 import {
   VizbeeCastButton,
   VizbeeManager,
   //@ts-ignore
 } from "react-native-vizbee-sender-sdk";
+import { 
+  AppStateMonitor 
+  //@ts-ignore
+} from "react-native-app-state-monitor";
 import { VizbeeHomeSSOManager } from "react-native-vizbee-homesso-sender-sdk";
 import { RNDemoAppVizbeeHomeSSODelegate } from "../homesso/RNDemoAppVizbeeHomeSSODelegate";
 import { VideoList } from "../components/VideoList";
@@ -21,10 +25,20 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
   const { castIconState } = useVizbeeCastIconState();
   const { castingPosition, lastCastingGuid } = useVizbeeMedia();
   const [mobileToTVMessager] = useState(() => new MobileToTVMessager());
+  const [appState, setAppState] = useState(AppStateMonitor.currentState);
   let homeSSOManager: VizbeeHomeSSOManager | undefined = undefined;
 
+  // App state change handler
+  const handleAppStateChange = useCallback((newState: string) => {
+    console.log(`App state changed to: ${newState}`);
+    setAppState(newState);
+  }, []);
+
   useEffect(() => {
-    
+    // Set up app state listener
+    const unsubscribe = AppStateMonitor.addEventListener(handleAppStateChange);
+
+    // Initial setup
     if (!homeSSOManager) {
       homeSSOManager = VizbeeHomeSSOManager.getInstance();
       homeSSOManager.enableLogging(true);
@@ -38,7 +52,12 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
     setTimeout(() => {
       VizbeeManager.smartPrompt();
     }, 2000);
-  }, []);
+
+    // Cleanup
+    return () => {
+      unsubscribe();
+    };
+  }, [handleAppStateChange]);
 
   useEffect(() => {
     if (castingState === "NOT_CONNECTED" && lastCastingGuid) {

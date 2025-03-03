@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "ios": "NODE_OPTIONS=--openssl-legacy-provider react-native run-ios",
+    "android": "NODE_OPTIONS=--openssl-legacy-provider react-native run-android"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
@@ -27,7 +27,8 @@
     "react-native-vector-icons": "^10.2.0",
     "react-native-video": "^6.4.3",
     "react-native-vizbee-homesso-sender-sdk": "^1.0.0",
-    "react-native-vizbee-sender-sdk": "^1.1.43"
+    "react-native-vizbee-sender-sdk": "^1.1.43",
+    "react-native-app-state-monitor": "^1.0.0-rc.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
