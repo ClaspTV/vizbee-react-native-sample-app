@@ -15,6 +15,7 @@ import { VideoList } from "../components/VideoList";
 import { useVizbeeSession } from "../hooks/useVizbeeSession";
 import { useVizbeeMedia } from "../hooks/useVizbeeMedia";
 import { useVizbeeCastIconState } from "../hooks/useVizbeeCastIconState";
+import { useVizbeeAnalytics } from "../hooks/useVizbeeAnalytics";
 import { videos } from "../constants/VideoListContent";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Colors } from '../constants/Colors';
@@ -23,6 +24,7 @@ import { MobileToTVMessager } from '../message/MobileToTVMessager';
 export const HomeScreen = ({ navigation }: { navigation: any }) => {
   const { castingState } = useVizbeeSession();
   const { castIconState } = useVizbeeCastIconState();
+  const { lastEvent } = useVizbeeAnalytics();
   const { castingPosition, lastCastingGuid } = useVizbeeMedia();
   const [mobileToTVMessager] = useState(() => new MobileToTVMessager());
   const [appState, setAppState] = useState(AppStateMonitor.currentState);
@@ -80,6 +82,13 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
   const handleSettingsPress = () => {
     navigation.navigate('Settings');
   };
+
+  // Log analytics events
+  useEffect(() => {
+    if (lastEvent) {
+      console.log(`HomeScreen received analytics event: ${lastEvent.event}`);
+    }
+  }, [lastEvent]);
 
   return (
     <View style={styles.container}>
