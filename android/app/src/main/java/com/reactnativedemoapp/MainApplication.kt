@@ -10,7 +10,9 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+import tv.vizbee.api.VizbeeContext
 import tv.vizbee.rnsender.VizbeeBootstrap;
+import tv.vizbee.api.VizbeeOptions
 
 class MainApplication : Application(), ReactApplication {
 
@@ -43,6 +45,10 @@ class MainApplication : Application(), ReactApplication {
 
     // Vizbee initialization
     val appId = getString(R.string.vizbee_app_id)
+   val options = VizbeeOptions.Builder()
+       .setConfigServiceProxyHost("config.claspws.tv")
+       .build()
+      // VizbeeContext.getInstance().enableVerboseLogging()
     VizbeeBootstrap.getInstance().initialize(this, appId);
   }
 }

@@ -14,7 +14,9 @@
 
   // Initialize Vizbee SDK
     VZBOptions *options = [VZBOptions new];
+ options.configServiceProxyHost = @"cast-config.plex.tv";
     options.uiConfig = [VizbeeStyles darkTheme];
+    
     [[VizbeeBootstrap getInstance] initialize:@"vzb2000001" withOptions:options];
 
   self.initialProps = @{};

@@ -27,18 +27,18 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
   const { lastEvent } = useVizbeeAnalytics();
   const { castingPosition, lastCastingGuid } = useVizbeeMedia();
   const [mobileToTVMessager] = useState(() => new MobileToTVMessager());
-  const [appState, setAppState] = useState(AppStateMonitor.currentState);
+  // const [appState, setAppState] = useState(AppStateMonitor.currentState);
   let homeSSOManager: VizbeeHomeSSOManager | undefined = undefined;
 
   // App state change handler
-  const handleAppStateChange = useCallback((newState: string) => {
-    console.log(`App state changed to: ${newState}`);
-    setAppState(newState);
-  }, []);
+  // const handleAppStateChange = useCallback((newState: string) => {
+  //   console.log(`App state changed to: ${newState}`);
+  //   setAppState(newState);
+  // }, []);
 
   useEffect(() => {
     // Set up app state listener
-    const unsubscribe = AppStateMonitor.addEventListener(handleAppStateChange);
+    // const unsubscribe = AppStateMonitor.addEventListener(handleAppStateChange);
 
     // Initial setup
     if (!homeSSOManager) {
@@ -56,10 +56,10 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
     }, 2000);
 
     // Cleanup
-    return () => {
-      unsubscribe();
-    };
-  }, [handleAppStateChange]);
+    // return () => {
+    //   unsubscribe();
+    // };
+  }, []);
 
   useEffect(() => {
     if (castingState === "NOT_CONNECTED" && lastCastingGuid) {

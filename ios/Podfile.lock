@@ -1388,11 +1388,11 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNVizbeeHomeSSOSenderSdk (1.0.0):
+  - RNVizbeeHomeSSOSenderSdk (1.0.1):
     - React
     - VizbeeHomeSSOKit
     - VizbeeKit
-  - RNVizbeeSenderSdk (1.1.42-rc.5):
+  - RNVizbeeSenderSdk (1.1.48):
     - React
     - VizbeeKit
   - SocketRocket (0.7.0)
@@ -1682,8 +1682,8 @@ SPEC CHECKSUMS:
   RNReanimated: 5a19d7bc2fd0f1929d81301359a627d83c3684be
   RNScreens: 024c5cb8569dea6667b5c73e6c119beb83f686f0
   RNVectorIcons: 845eda5c7819bd29699cafd0fc98c9d4afe28c96
-  RNVizbeeHomeSSOSenderSdk: 1918cb1cb9871f741cc4338f19a43049034ce9ef
-  RNVizbeeSenderSdk: 048f933f740499a263dbfff27bdb55d859bafb05
+  RNVizbeeHomeSSOSenderSdk: 26568a8c29ae05c68b6701beb9c1698260cebc47
+  RNVizbeeSenderSdk: ea0398c439e881ea44ff1dc233ddd2e0e3ee9ac7
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   VizbeeHomeOSKit: fa670edbb8beffef4b3e70c276dcdfb0c5ecbed0
   VizbeeHomeSSOKit: 3773cbf0105f8fdd934fa1131d81063ace755195
