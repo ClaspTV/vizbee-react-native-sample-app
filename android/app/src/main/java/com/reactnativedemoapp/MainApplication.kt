@@ -46,9 +46,8 @@ class MainApplication : Application(), ReactApplication {
     // Vizbee initialization
     val appId = getString(R.string.vizbee_app_id)
    val options = VizbeeOptions.Builder()
-       .setConfigServiceProxyHost("config.claspws.tv")
        .build()
       // VizbeeContext.getInstance().enableVerboseLogging()
-    VizbeeBootstrap.getInstance().initialize(this, appId);
+    VizbeeBootstrap.getInstance().initialize(this, appId, options);
   }
 }

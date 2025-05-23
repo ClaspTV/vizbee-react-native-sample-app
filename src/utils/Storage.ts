@@ -63,6 +63,23 @@ export const Storage = {
         }
     },
 
+    getItem: async (key: string): Promise<string | null> => {
+        try {
+            return await AsyncStorage.getItem(key);
+        } catch (error) {
+            console.error(`Error getting ${key} from storage:`, error);
+            return null;
+        }
+    },
+    
+    setItem: async(key: string, value: string): Promise<void> => {
+        try {
+            await AsyncStorage.setItem(key, value);
+        } catch (error) {
+            console.error(`Error setting ${key} in storage:`, error);
+        }
+    },
+
     clearAll: async (): Promise<void> => {
         try {
             await AsyncStorage.clear();

@@ -14,12 +14,33 @@ import { RootStackParamList } from '../../App';
 import { headerStyles } from '../styles/HeaderStyles';
 import { Colors } from '../constants/Colors';
 import { MobileToTVMessager } from '../message//MobileToTVMessager';
+// @ts-ignore
+import { VizbeeSmartPlayCardVisibility } from "react-native-vizbee-sender-sdk";
+
+// Create SmartPlay option types
+export type SmartPlayOption = {
+  id: number;
+  name: string;
+  value: number | null; // null means no options
+};
+
+// Define the SmartPlay options
+export const SMART_PLAY_OPTIONS: SmartPlayOption[] = [
+  { id: 0, name: 'No Options', value: null },
+  { id: 1, name: 'Default Configuration', value: VizbeeSmartPlayCardVisibility.SHOW_HIDE_BASED_ON_CONFIGURATION },
+  { id: 2, name: 'Force Show', value: VizbeeSmartPlayCardVisibility.FORCE_SHOW },
+  { id: 3, name: 'Force Hide', value: VizbeeSmartPlayCardVisibility.FORCE_HIDE },
+];
+
+// Define a key for storing the selected option
+export const SMART_PLAY_OPTION_KEY = 'smartPlaySelectedOption';
 
 type SettingsScreenProps = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
 export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedSmartPlayOption, setSelectedSmartPlayOption] = useState<SmartPlayOption>(SMART_PLAY_OPTIONS[1]); // Default to Show/Hide based on configuration
   const mobileToTVMessager = useRef(new MobileToTVMessager());
 
   const checkAuthStatus = useCallback(async () => {
@@ -71,7 +92,33 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) =>
     }
   };
 
+  // Function to navigate to the SmartPlay Options screen
+  const handleSmartPlayOptions = () => {
+    navigation.navigate('SmartPlayOptions', {
+      options: SMART_PLAY_OPTIONS,
+      selectedOption: selectedSmartPlayOption,
+      onSelect: (option: SmartPlayOption) => {
+        setSelectedSmartPlayOption(option);
+        // Store the selected option ID
+        Storage.setItem(SMART_PLAY_OPTION_KEY, option.id.toString());
+      }
+    });
+  };
+
+  // Load the selected SmartPlay option
   useEffect(() => {
+    const loadSmartPlayOption = async () => {
+      const savedOptionId = await Storage.getItem(SMART_PLAY_OPTION_KEY);
+      if (savedOptionId) {
+        const optionId = parseInt(savedOptionId, 10);
+        const option = SMART_PLAY_OPTIONS.find(opt => opt.id === optionId);
+        if (option) {
+          setSelectedSmartPlayOption(option);
+        }
+      }
+    };
+
+    loadSmartPlayOption();
     checkAuthStatus();
   }, [checkAuthStatus]);
 
@@ -109,6 +156,17 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) =>
         <Text style={styles.menuText}>Send Message to TV</Text>
         <Text style={styles.chevron}>›</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={handleSmartPlayOptions}
+      >
+        <View style={styles.optionContainer}>
+          <Text style={styles.menuText}>SmartPlay Card Options</Text>
+          <Text style={styles.optionValue}>{selectedSmartPlayOption.name}</Text>
+        </View>
+        <Text style={styles.chevron}>›</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -133,5 +191,13 @@ const styles = StyleSheet.create({
   chevron: {
     fontSize: 24,
     color: Colors.text.secondary,
+  },
+  optionContainer: {
+    flex: 1,
+  },
+  optionValue: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    marginTop: 4,
   },
 });

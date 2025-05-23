@@ -10,7 +10,8 @@ import {
 import { HomeScreen } from "./src/screens/HomeScreen";
 import { PlayerScreen } from "./src/screens/PlayerScreen";
 import { LoginScreen } from "./src/screens/LoginScreen";
-import { SettingsScreen } from "./src/screens/SettingsScreen";
+import { SettingsScreen, SmartPlayOption } from "./src/screens/SettingsScreen";
+import { SmartPlayOptionsScreen } from "./src/screens/SmartPlayOptionsScreen";
 import { navigationRef } from "./src/utils/NavigationService";
 
 export type RootStackParamList = {
@@ -21,6 +22,11 @@ export type RootStackParamList = {
     onSignInComplete?: () => void;
   };
   Settings: undefined;
+  SmartPlayOptions: { 
+    options: Array<SmartPlayOption>;
+    selectedOption: SmartPlayOption;
+    onSelect: (option: SmartPlayOption) => void;
+  };
 };
 
 
@@ -46,6 +52,11 @@ const App = () => {
               name="Login"
               component={LoginScreen}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+            name="SmartPlayOptions" 
+            component={SmartPlayOptionsScreen}
+            options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Settings"
