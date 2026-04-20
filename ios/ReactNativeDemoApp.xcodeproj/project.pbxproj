@@ -15,6 +15,7 @@
 		1492F591BDE0D1977C5247FA /* libPods-ReactNativeDemoApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13EAAD25132068491EF2A726 /* libPods-ReactNativeDemoApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8410A2252C665BA400233BF8 /* VizbeeStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410A2242C665BA400233BF8 /* VizbeeStyles.swift */; };
+		84E785642E684265007709A3 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E785632E684265007709A3 /* main.jsbundle */; };
 		9F363EDA2EC37209ADA10FFA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B30A232D7A22FC29752B6797 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +48,8 @@
 		8410A2232C665BA300233BF8 /* ReactNativeDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactNativeDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8410A2242C665BA400233BF8 /* VizbeeStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VizbeeStyles.swift; path = ReactNativeDemoApp/VizbeeStyles.swift; sourceTree = "<group>"; };
 		8410A2262C665C2700233BF8 /* ReactNativeDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ReactNativeDemoApp.entitlements; path = ReactNativeDemoApp/ReactNativeDemoApp.entitlements; sourceTree = "<group>"; };
-		AF6AA9953D5ABB9A23772842 /* Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeDemoApp-ReactNativeDemoAppTests/Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		84E785632E684265007709A3 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeDemoApp-ReactNativeDemoAppTests/Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B30A232D7A22FC29752B6797 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ReactNativeDemoApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		E812A9C8E8E47BA48C4DC73B /* Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeDemoApp-ReactNativeDemoAppTests/Pods-ReactNativeDemoApp-ReactNativeDemoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -101,6 +103,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				84E785632E684265007709A3 /* main.jsbundle */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				B30A232D7A22FC29752B6797 /* PrivacyInfo.xcprivacy */,
 				8410A2232C665BA300233BF8 /* ReactNativeDemoApp-Bridging-Header.h */,
@@ -256,6 +259,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				9F363EDA2EC37209ADA10FFA /* PrivacyInfo.xcprivacy in Resources */,
+				84E785642E684265007709A3 /* main.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+			shellScript = "set -e\n";
 		};
 		10C9D74050C9C235C5A6164F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

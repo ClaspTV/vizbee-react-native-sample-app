@@ -26,8 +26,8 @@
     "react-native-screens": "^4.4.0",
     "react-native-vector-icons": "^10.2.0",
     "react-native-video": "^6.4.3",
-    "react-native-vizbee-homesso-sender-sdk": "^1.0.1",
-    "react-native-vizbee-sender-sdk": "^1.1.49",
+    "react-native-vizbee-homesso-sender-sdk": "^1.0.4",
+    "react-native-vizbee-sender-sdk": "^1.1.52",
     "react-native-app-state-monitor": "^1.0.0-rc.4"
   },
   "devDependencies": {

@@ -33,4 +33,40 @@ export const videos: VideoItem[] = [
     streamUrl:
       "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
   },
+  {
+    guid: "no-subtitle",
+    title: "Video with no subtitle",
+    imageUrl:
+      "https://images.pexels.com/photos/4482677/pexels-photo-4482677.jpeg?auto=compress&cs=tinysrgb&w=800",
+    isLive: false,
+    streamUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/hls/ElephantsDream.m3u8",
+  },
+  {
+    guid: "no-title-subtitle",
+    imageUrl:
+      "https://s3.amazonaws.com/vizbee/images/demoapp/20732e42e9cec9dcf99dc305cb6615e3.jpg",
+    isLive: false,
+    streamUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/hls/TearsOfSteel.m3u8",
+  },
+  {
+    title: "Fake Video with Bad URL",
+    subtitle: "Won't play on TV",
+    guid: "fake",
+    imageUrl:
+      "https://s-media-cache-ak0.pinimg.com/originals/fa/47/54/fa475423da097d624d75d49a79d8e140.jpg",
+    isLive: false,
+    streamUrl: "http://vizbee.tv/does-not-exist.m3u8",
+    genre: "Crime Comedy",
+  },
+  {
+    title: "URL Throws Error After 1min",
+    guid: "throw-error",
+    imageUrl: "",
+    isLive: false,
+    streamUrl:
+      "https://content.claspws.tv/hls-samples/mid-stream-error/manifest.m3u8",
+    genre: "Crime Comedy",
+  },
 ];
